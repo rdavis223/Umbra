@@ -11,6 +11,7 @@ public class PlayerLook : MonoBehaviour
 
     float xRotation = 0f;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +31,6 @@ public class PlayerLook : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 
-
+    
     }
 }

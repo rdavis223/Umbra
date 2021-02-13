@@ -20,6 +20,7 @@ public class ZombieAI : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +30,7 @@ public class ZombieAI : MonoBehaviour
     void Awake(){
         player = GameObject.Find("Player");
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -38,10 +40,13 @@ public class ZombieAI : MonoBehaviour
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
         if (playerInAttackRange){
+            animator.SetTrigger("Attack");
             Attack();
         } else if (playerInSightRange){
+            animator.SetTrigger("Run");
             Chase();
         } else {
+            animator.SetTrigger("Walk");
             Patrolling();
         }
     }
