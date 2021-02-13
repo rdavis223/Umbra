@@ -20,7 +20,14 @@ public class ZombieAI : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    private float attackCooldown = 0f;
+
+    private GameObject playerHealth;
+
     private Animator animator;
+
+    private bool justAttacked = false;
+    private float animationCooldown = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +36,7 @@ public class ZombieAI : MonoBehaviour
 
     void Awake(){
         player = GameObject.Find("Player");
+        playerHealth = GameObject.Find("PlayerHealthMgr");
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
     }
@@ -39,7 +47,16 @@ public class ZombieAI : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (playerInAttackRange){
+
+        if (attackCooldown > 0f){
+            attackCooldown -= Time.deltaTime;
+        }
+
+        if (attackCooldown > 0f && playerInAttackRange){
+            animator.SetTrigger("Idle");
+        }
+        else if (playerInAttackRange && attackCooldown <= 0f){
+            justAttacked = true;
             animator.SetTrigger("Attack");
             Attack();
         } else if (playerInSightRange){
@@ -79,5 +96,7 @@ public class ZombieAI : MonoBehaviour
     void Attack(){
         agent.SetDestination(transform.position);
         transform.LookAt(new Vector3(player.transform.position.x, 0, player.transform.position.z));
+        attackCooldown = 2f;
+        playerHealth.GetComponent<PlayerHealthMgr>().dealDamage(10);
     }
 }
