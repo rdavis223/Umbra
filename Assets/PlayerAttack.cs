@@ -7,7 +7,6 @@ public class PlayerAttack : MonoBehaviour
 
     public Animator animator;
 
-
     private bool attacking = false;
     private GameObject zombie = null;
     // Start is called before the first frame update
