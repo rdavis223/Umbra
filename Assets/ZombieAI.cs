@@ -28,6 +28,10 @@ public class ZombieAI : MonoBehaviour
 
     private bool justAttacked = false;
     private float animationCooldown = 0f;
+
+    private bool takingDamage = false;
+
+    private int zombieHealth = 100;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +51,9 @@ public class ZombieAI : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-
+        if (justAttacked || takingDamage){
+            return;
+        }
         if (attackCooldown > 0f){
             attackCooldown -= Time.deltaTime;
         }
@@ -57,8 +63,8 @@ public class ZombieAI : MonoBehaviour
         }
         else if (playerInAttackRange && attackCooldown <= 0f){
             justAttacked = true;
-            animator.SetTrigger("Attack");
-            Attack();
+            animator.SetTrigger("Idle");
+            Invoke("Attack", 0.5f);
         } else if (playerInSightRange){
             animator.SetTrigger("Run");
             Chase();
@@ -94,9 +100,37 @@ public class ZombieAI : MonoBehaviour
     }
 
     void Attack(){
-        agent.SetDestination(transform.position);
-        transform.LookAt(new Vector3(player.transform.position.x, 0, player.transform.position.z));
-        attackCooldown = 2f;
-        playerHealth.GetComponent<PlayerHealthMgr>().dealDamage(10);
+        if (!takingDamage){
+            animator.SetTrigger("Attack");
+            agent.SetDestination(transform.position);
+            transform.LookAt(new Vector3(player.transform.position.x, 0, player.transform.position.z));
+            attackCooldown = 1.5f;
+            playerHealth.GetComponent<PlayerHealthMgr>().dealDamage(10);
+            justAttacked = false;
+        }
+        justAttacked = false;
+    }
+
+    public void dealDamage(int damage){
+        // if (!takingDamage){
+        //     agent.enabled = false;
+        //     takingDamage = true;
+        //     animator.SetTrigger("Idle");
+        //     StartCoroutine("damageAnim");
+        // } 
+        //Do Damage here regardless
+        zombieHealth -= damage;
+        if (zombieHealth <= 0){
+            Destroy(this.gameObject);
+        }
+    }
+
+    IEnumerator damageAnim(){
+        animator.SetTrigger("Damage");
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        takingDamage = false;
+        agent.enabled = true;
+        Debug.Log("Deactivated");
     }
 }
