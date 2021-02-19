@@ -21,6 +21,8 @@ public class ForestGen : MonoBehaviour
 
     public int cullingRange = 80;
 
+    public GameObject heliPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,18 +32,41 @@ public class ForestGen : MonoBehaviour
         int max_j = (int) terrain.bounds.max.z;
 
         activatorItems = new List<ActivatorItem>();
+        Vector3 heliPos = new Vector3(0,0,0);
+        bool run = true;
+        //place helicopter
+        while (run){
+            int heliX = Random.Range(10, max_i - 10);
+            int heliZ = Random.Range(10, max_j - 10);
+            heliPos = new Vector3(heliX, 0, heliZ);
+            if (Vector3.Distance(heliPos, player.transform.position) > 250)
+            {
+                run = false;
+            }
+        }
 
+        GameObject heli = Instantiate(heliPrefab);
+        heli.transform.position = heliPos;
+        ActivatorItem item = new ActivatorItem();
+        item.itemRef = heli;
+        item.itemPos = heli.transform.position;
+        item.isHidden = true;
+        heli.SetActive(false); 
+        activatorItems.Add(item);
 
         int treeCount = 0; 
         while (i < max_i){
             j = (int) this.transform.position.z;
             while (j < max_j){
                 Vector3 position = new Vector3(i + Random.Range(-randomRange, randomRange), 0, j + Random.Range(-randomRange, randomRange));
-                if (position.x > 0 && position.z > 0 && position.x < max_i && position.z < max_j){
+                if (Vector3.Distance(heli.transform.position, position) < 12){
+                    j+= elementSpacing;
+                }
+                else if (position.x > 0 && position.z > 0 && position.x < max_i && position.z < max_j){
                     GameObject newTree = Instantiate(treePrefab);
                     treeCount++;
                     newTree.transform.position = position;
-                    ActivatorItem item = new ActivatorItem();
+                    item = new ActivatorItem();
                     item.itemRef = newTree;
                     item.itemPos = newTree.transform.position;
                     item.isHidden = true;

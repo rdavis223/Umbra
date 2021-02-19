@@ -2817,7 +2817,7 @@ GameObject:
   - component: {fileID: 1141549212}
   - component: {fileID: 1141549211}
   m_Layer: 0
-  m_Name: ForestGenerator
+  m_Name: LoadManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2846,6 +2846,8 @@ MonoBehaviour:
   terrain: {fileID: 440582242}
   player: {fileID: 1946215953}
   cullingRange: 60
+  heliPrefab: {fileID: 945505733878136435, guid: ac479af2519a6405cb19977d8c021591,
+    type: 3}
 --- !u!4 &1141549212
 Transform:
   m_ObjectHideFlags: 0
