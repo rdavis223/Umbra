@@ -112,12 +112,12 @@ public class ZombieAI : MonoBehaviour
     }
 
     public void dealDamage(int damage){
-        // if (!takingDamage){
-        //     agent.enabled = false;
-        //     takingDamage = true;
-        //     animator.SetTrigger("Idle");
-        //     StartCoroutine("damageAnim");
-        // } 
+        if (!takingDamage){
+            agent.enabled = false;
+            takingDamage = true;
+            animator.SetTrigger("Idle");
+            animator.SetTrigger("Damage");
+        } 
         //Do Damage here regardless
         zombieHealth -= damage;
         if (zombieHealth <= 0){
@@ -125,10 +125,7 @@ public class ZombieAI : MonoBehaviour
         }
     }
 
-    IEnumerator damageAnim(){
-        animator.SetTrigger("Damage");
-        yield return new WaitForEndOfFrame();
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+    public void finishDamage(){
         takingDamage = false;
         agent.enabled = true;
         Debug.Log("Deactivated");

@@ -27,12 +27,11 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    IEnumerator attack()
+    public void attack()
     {
         //This is a coroutine
-        yield return new WaitForEndOfFrame();
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length); 
-           //Wait one frame
+        //Wait one frame
+        Debug.Log("Fire");
         if (zombie != null){
             Debug.Log("DealDamage");
             zombie.GetComponent<ZombieAI>().dealDamage(40);
@@ -42,11 +41,13 @@ public class PlayerAttack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other){
         if (other.gameObject.name == "Zombie1"){
+            Debug.Log("Enter");
             zombie = other.gameObject;
         }
     }
 
     private void OnTriggerExit(Collider other){
+        Debug.Log("Exit");
         zombie = null;
     }
 }
