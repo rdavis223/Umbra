@@ -41,13 +41,13 @@ public class PlayerAttack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other){
         if (other.gameObject.name == "Zombie1"){
-            Debug.Log("Enter");
             zombie = other.gameObject;
         }
     }
 
     private void OnTriggerExit(Collider other){
-        Debug.Log("Exit");
-        zombie = null;
+        if (other.gameObject.name == "Zombie1"){
+            zombie = null;
+        }
     }
 }

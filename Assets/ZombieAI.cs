@@ -128,6 +128,5 @@ public class ZombieAI : MonoBehaviour
     public void finishDamage(){
         takingDamage = false;
         agent.enabled = true;
-        Debug.Log("Deactivated");
     }
 }
