@@ -64,7 +64,7 @@ public class ZombieAI : MonoBehaviour
         else if (playerInAttackRange && attackCooldown <= 0f){
             justAttacked = true;
             animator.SetTrigger("Idle");
-            Invoke("Attack", 0.5f);
+            Attack();
         } else if (playerInSightRange){
             animator.SetTrigger("Run");
             Chase();
