@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GoalPoint : MonoBehaviour
 {
+    private GameObject UiMgr;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,9 +17,13 @@ public class GoalPoint : MonoBehaviour
         
     }
 
+    void Awake(){
+        UiMgr = GameObject.Find("UiMgr");
+    }
+
     void OnTriggerEnter(Collider other){
         if (other.gameObject.name == "Player"){
-            Debug.Log("GameOver");
+            UiMgr.GetComponent<UiMgr>().GameWin();
         }
     }
 }

@@ -13,6 +13,8 @@ public class PlayerHealthMgr : MonoBehaviour
 
     public GameObject fillArea;
 
+    public GameObject UiMgr;
+
 
     void Start()
     {
@@ -29,6 +31,7 @@ public class PlayerHealthMgr : MonoBehaviour
         else 
         {
             fillArea.SetActive(false);
+            UiMgr.GetComponent<UiMgr>().GameLose();
         }
         
     }
