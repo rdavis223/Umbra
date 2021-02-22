@@ -31,9 +31,9 @@ public class UiMgr : MonoBehaviour
     }
 
     public void GameLose(){
-        Time.timeScale = 0;
-        GameOverMenu.SetActive(true);
-        Cursor.lockState = CursorLockMode.None;
+        // Time.timeScale = 0;
+        // GameOverMenu.SetActive(true);
+        // Cursor.lockState = CursorLockMode.None;
     }
 
     void GamePause(){
