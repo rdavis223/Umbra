@@ -75,6 +75,7 @@ public class ZombieAI : MonoBehaviour
     }
 
     void Patrolling(){
+        this.GetComponent<NavMeshAgent>().speed = 1.5f;
         if (!walkPointSet){
             float z = Random.Range(-walkPointRange, walkPointRange);
             float x = Random.Range(-walkPointRange, walkPointRange);
@@ -96,6 +97,7 @@ public class ZombieAI : MonoBehaviour
     }
 
     void Chase(){
+        this.GetComponent<NavMeshAgent>().speed = 3.5f;
         agent.SetDestination(player.transform.position);
     }
 

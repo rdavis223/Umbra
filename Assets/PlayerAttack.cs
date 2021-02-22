@@ -22,7 +22,6 @@ public class PlayerAttack : MonoBehaviour
             if (!attacking){
                 animator.SetTrigger("Attack");
                 attacking = true;
-                StartCoroutine("attack");
             }
         }
     }
@@ -31,7 +30,6 @@ public class PlayerAttack : MonoBehaviour
     {
         //This is a coroutine
         //Wait one frame
-        Debug.Log("Fire");
         if (zombie != null){
             Debug.Log("DealDamage");
             zombie.GetComponent<ZombieAI>().dealDamage(40);
@@ -40,13 +38,13 @@ public class PlayerAttack : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other){
-        if (other.gameObject.name == "Zombie1"){
+        if (other.gameObject.name.Contains("Zombie")){
             zombie = other.gameObject;
         }
     }
 
     private void OnTriggerExit(Collider other){
-        if (other.gameObject.name == "Zombie1"){
+        if (other.gameObject.name.Contains("Zombie")){
             zombie = null;
         }
     }
