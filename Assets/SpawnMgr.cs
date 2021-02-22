@@ -25,19 +25,21 @@ public class SpawnMgr : MonoBehaviour
     }
 
     IEnumerator SpawnZombies(){
-        int i = 1;
-        int j = 1;
+        int i = 0;
+        int j = 0;
         int zombieNum = currentZombies;
         if (zombieNum > 30){
             zombieNum = 30;
         }
-        while (i < quadSize*2){
+        while (i < 800){
+            Debug.Log(i);
             j = 0;
-            while (j < quadSize*2){
+            while (j < 800){
+                Debug.Log(j);
                 int x = 0;
                 while (x < zombieNum){
                     GameObject zombie = Instantiate(zombiePrefab);
-                    zombie.transform.position = new Vector3(Random.Range(i, i +quadSize), 0 , Random.Range(j, j+quadSize));
+                    zombie.GetComponent<ZombieAI>().properPos = new Vector3(Random.Range((float) i, (float) i +quadSize), 0 , Random.Range((float)j, (float) j+quadSize));
                     x++;
                 }
                 j+=quadSize;

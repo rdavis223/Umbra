@@ -11,7 +11,7 @@ public class ZombieAI : MonoBehaviour
     public LayerMask whatIsGround, whatIsPlayer;
 
     public Vector3 walkPoint;
-    bool walkPointSet;
+    bool walkPointSet = false;
     public float walkPointRange;
 
     public float timeBetweenAttacks;
@@ -32,6 +32,10 @@ public class ZombieAI : MonoBehaviour
     private bool takingDamage = false;
 
     private int zombieHealth = 100;
+
+    public Vector3 properPos;
+
+    public bool first_run = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,11 +47,16 @@ public class ZombieAI : MonoBehaviour
         playerHealth = GameObject.Find("PlayerHealthMgr");
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        transform.position = properPos;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (first_run){
+            agent.Warp(properPos);
+            first_run = false;
+        }
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
