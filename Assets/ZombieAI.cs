@@ -73,7 +73,7 @@ public class ZombieAI : MonoBehaviour
         else if (playerInAttackRange && attackCooldown <= 0f){
             justAttacked = true;
             animator.SetTrigger("Idle");
-            Attack();
+            Invoke("Attack", 1f);
         } else if (playerInSightRange){
             animator.SetTrigger("Run");
             Chase();
@@ -123,6 +123,8 @@ public class ZombieAI : MonoBehaviour
     }
 
     public void dealDamage(int damage){
+        CancelInvoke("Attack");
+        justAttacked = false;
         if (!takingDamage){
             agent.enabled = false;
             takingDamage = true;
