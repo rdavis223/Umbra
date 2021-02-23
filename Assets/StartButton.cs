@@ -1,26 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-public class MenuReturnButton : MonoBehaviour
+using UnityEngine.UI;
+public class StartButton : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-        
+        this.GetComponent<Button>().onClick.AddListener(StartButtonActivate);
+
     }
 
-    void Awake(){
-        this.GetComponent<Button>().onClick.AddListener(ReturnToMainMenu);
-    }
     // Update is called once per frame
     void Update()
     {
         
     }
 
-    void ReturnToMainMenu(){
-        SceneManager.LoadScene("Menu");
+    void StartButtonActivate()
+    {
+          SceneManager.LoadScene("Prototype");
     }
 }
