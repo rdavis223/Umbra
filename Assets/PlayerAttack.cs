@@ -18,10 +18,13 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)){
-            if (!attacking){
-                animator.SetTrigger("Attack");
-                attacking = true;
+        if (Cursor.lockState != CursorLockMode.None){
+            if (Input.GetMouseButtonDown(0)){
+                if (!attacking){
+                    animator.SetTrigger("Attack");
+                    this.GetComponent<AudioSource>().Play();
+                    attacking = true;
+                }
             }
         }
     }

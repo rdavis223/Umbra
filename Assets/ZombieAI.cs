@@ -35,6 +35,8 @@ public class ZombieAI : MonoBehaviour
 
     public Vector3 properPos;
 
+    private bool playedSound = false;
+
     public bool first_run = true;
     // Start is called before the first frame update
     void Start()
@@ -73,7 +75,7 @@ public class ZombieAI : MonoBehaviour
         else if (playerInAttackRange && attackCooldown <= 0f){
             justAttacked = true;
             animator.SetTrigger("Idle");
-            Invoke("Attack", 1f);
+            Invoke("Attack", 0.6f);
         } else if (playerInSightRange){
             animator.SetTrigger("Run");
             Chase();
@@ -84,6 +86,7 @@ public class ZombieAI : MonoBehaviour
     }
 
     void Patrolling(){
+        playedSound = false;
         this.GetComponent<NavMeshAgent>().speed = 1.5f;
         if (!walkPointSet){
             float z = Random.Range(-walkPointRange, walkPointRange);
@@ -107,12 +110,17 @@ public class ZombieAI : MonoBehaviour
 
     void Chase(){
         this.GetComponent<NavMeshAgent>().speed = 3.5f;
+        if (Vector3.Distance(player.transform.position, transform.position) < 10 && !playedSound){
+            this.GetComponents<AudioSource>()[0].Play();
+            playedSound = true;
+        }
         agent.SetDestination(player.transform.position);
     }
 
     void Attack(){
         if (!takingDamage){
             animator.SetTrigger("Attack");
+            this.GetComponents<AudioSource>()[1].Play();
             agent.SetDestination(transform.position);
             transform.LookAt(new Vector3(player.transform.position.x, 0, player.transform.position.z));
             attackCooldown = 1.5f;
@@ -126,7 +134,6 @@ public class ZombieAI : MonoBehaviour
         CancelInvoke("Attack");
         justAttacked = false;
         if (!takingDamage){
-            agent.enabled = false;
             takingDamage = true;
             animator.SetTrigger("Idle");
             animator.SetTrigger("Damage");
