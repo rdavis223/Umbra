@@ -15,7 +15,7 @@ public class PlayerPaint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.E)){
+        if (Input.GetMouseButton(1)){
             RaycastHit hit;
             Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
             
