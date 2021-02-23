@@ -31,10 +31,10 @@ public class SpawnMgr : MonoBehaviour
         if (zombieNum > 30){
             zombieNum = 30;
         }
-        while (i < 800){
+        while (i < quadSize*2){
             Debug.Log(i);
             j = 0;
-            while (j < 800){
+            while (j < quadSize*2){
                 Debug.Log(j);
                 int x = 0;
                 while (x < zombieNum){

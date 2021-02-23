@@ -7,9 +7,11 @@ public class PlayerLook : MonoBehaviour
 
     public float sensitivity = 100f;
 
-    public Transform playerBody;
+    public GameObject playerBody;
 
     float xRotation = 0f;
+
+    public Vector3 heliLocation;
 
 
     // Start is called before the first frame update
@@ -31,9 +33,13 @@ public class PlayerLook : MonoBehaviour
         xRotation -= mouseY;
 
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-        playerBody.Rotate(Vector3.up * mouseX);
+        playerBody.transform.Rotate(Vector3.up * mouseX);
 
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+
+        if (Input.GetKeyDown(KeyCode.L)){
+            playerBody.transform.LookAt(heliLocation);
+        }
 
     
     }

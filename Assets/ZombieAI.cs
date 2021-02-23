@@ -62,8 +62,15 @@ public class ZombieAI : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (justAttacked || takingDamage){
+        if (justAttacked){
             return;
+        }
+
+        if (takingDamage){
+            agent.enabled = false;
+            return;
+        } else {
+            agent.enabled = true;
         }
         if (attackCooldown > 0f){
             attackCooldown -= Time.deltaTime;
@@ -75,7 +82,7 @@ public class ZombieAI : MonoBehaviour
         else if (playerInAttackRange && attackCooldown <= 0f){
             justAttacked = true;
             animator.SetTrigger("Idle");
-            Invoke("Attack", 0.4f);
+            Invoke("Attack", 0.6f);
         } else if (playerInSightRange){
             animator.SetTrigger("Run");
             Chase();
@@ -109,12 +116,14 @@ public class ZombieAI : MonoBehaviour
     }
 
     void Chase(){
-        this.GetComponent<NavMeshAgent>().speed = 3.5f;
-        if (Vector3.Distance(player.transform.position, transform.position) < 8 && !playedSound){
-            this.GetComponents<AudioSource>()[0].Play();
-            playedSound = true;
+        if (!takingDamage){
+            this.GetComponent<NavMeshAgent>().speed = 3.5f;
+            if (Vector3.Distance(player.transform.position, transform.position) < 8 && !playedSound){
+                this.GetComponents<AudioSource>()[0].Play();
+                playedSound = true;
+            }
+            agent.SetDestination(player.transform.position);
         }
-        agent.SetDestination(player.transform.position);
     }
 
     void Attack(){

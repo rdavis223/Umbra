@@ -23,6 +23,10 @@ public class ForestGen : MonoBehaviour
 
     public GameObject heliPrefab;
 
+    public GameObject build1Prefab;
+
+    public GameObject build2Prefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,12 +43,11 @@ public class ForestGen : MonoBehaviour
             int heliX = Random.Range(10, max_i - 10);
             int heliZ = Random.Range(10, max_j - 10);
             heliPos = new Vector3(heliX, 0, heliZ);
-            if (Vector3.Distance(heliPos, player.transform.position) > 250)
+            if (Vector3.Distance(heliPos, player.transform.position) > 120)
             {
                 run = false;
             }
         }
-
         GameObject heli = Instantiate(heliPrefab);
         heli.transform.position = heliPos;
         ActivatorItem item = new ActivatorItem();
@@ -54,12 +57,58 @@ public class ForestGen : MonoBehaviour
         heli.SetActive(false); 
         activatorItems.Add(item);
 
+        GameObject.Find("Camera").GetComponent<PlayerLook>().heliLocation = item.itemPos;
+
+        Vector3 build1Pos = new Vector3(0,0,0);
+        run = true;
+        //place building1
+        while (run){
+            int heliX = Random.Range(10, max_i - 10);
+            int heliZ = Random.Range(10, max_j - 10);
+            build1Pos = new Vector3(heliX, 0, heliZ);
+            if (Vector3.Distance(build1Pos, player.transform.position) > 20 && Vector3.Distance(heliPos, build1Pos) > 20)
+            {
+                run = false;
+            }
+        }
+
+        GameObject build1 = Instantiate(build1Prefab);
+        build1.transform.position = build1Pos;
+        item = new ActivatorItem();
+        item.itemRef = build1;
+        item.itemPos = build1.transform.position;
+        item.isHidden = true;
+        build1.SetActive(false); 
+        activatorItems.Add(item);
+
+        Vector3 build2Pos = new Vector3(0,0,0);
+        run = true;
+        //place building2
+        while (run){
+            int heliX = Random.Range(10, max_i - 10);
+            int heliZ = Random.Range(10, max_j - 10);
+            build2Pos = new Vector3(heliX, 0, heliZ);
+            if (Vector3.Distance(build2Pos, player.transform.position) > 20 && Vector3.Distance(heliPos, build2Pos) > 20 && Vector3.Distance(build1Pos, build2Pos) > 50)
+            {
+                run = false;
+            }
+        }
+
+        GameObject build2 = Instantiate(build2Prefab);
+        build2.transform.position = build2Pos;
+        item = new ActivatorItem();
+        item.itemRef = build2;
+        item.itemPos = build2.transform.position;
+        item.isHidden = true;
+        build2.SetActive(false); 
+        activatorItems.Add(item);
+
         int treeCount = 0; 
         while (i < max_i){
             j = (int) this.transform.position.z;
             while (j < max_j){
                 Vector3 position = new Vector3(i + Random.Range(-randomRange, randomRange), 0, j + Random.Range(-randomRange, randomRange));
-                if (Vector3.Distance(heli.transform.position, position) < 12){
+                if (Vector3.Distance(heli.transform.position, position) < 12 || Vector3.Distance(build1.transform.position, position) < 7.5f || Vector3.Distance(build2.transform.position, position) < 7.5f){
                     j+= elementSpacing;
                 }
                 else if (position.x > 0 && position.z > 0 && position.x < max_i && position.z < max_j){

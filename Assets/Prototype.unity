@@ -659,8 +659,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 800, y: 200, z: 0.5}
-  m_Center: {x: 400, y: 100, z: -0.25}
+  m_Size: {x: 600, y: 200, z: 0.5}
+  m_Center: {x: 300, y: 100, z: -0.25}
 --- !u!4 &429822492
 Transform:
   m_ObjectHideFlags: 0
@@ -1348,8 +1348,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 800, y: 200, z: 0.5}
-  m_Center: {x: 400, y: 100, z: -0.25}
+  m_Size: {x: 600, y: 200, z: 0.5}
+  m_Center: {x: 300, y: 100, z: -0.25}
 --- !u!4 &574456131
 Transform:
   m_ObjectHideFlags: 0
@@ -1501,7 +1501,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 100
-  playerBody: {fileID: 1946215954}
+  playerBody: {fileID: 1946215953}
+  heliLocation: {x: 0, y: 0, z: 0}
 --- !u!114 &705135294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1827,8 +1828,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 800, y: 200, z: 0.5}
-  m_Center: {x: 400, y: 100, z: -0.25}
+  m_Size: {x: 600, y: 200, z: 0.5}
+  m_Center: {x: 300, y: 100, z: -0.25}
 --- !u!4 &1064155154
 Transform:
   m_ObjectHideFlags: 0
@@ -1885,6 +1886,8 @@ MonoBehaviour:
   cullingRange: 60
   heliPrefab: {fileID: 945505733878136435, guid: ac479af2519a6405cb19977d8c021591,
     type: 3}
+  build1Prefab: {fileID: 197152, guid: 0c33235d8e4ec124b8f0e17c87b30ee1, type: 3}
+  build2Prefab: {fileID: 177342, guid: b3a53a0efb7c50848b26f6eea91284bb, type: 3}
 --- !u!4 &1141549212
 Transform:
   m_ObjectHideFlags: 0
@@ -5117,7 +5120,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &1383795784
 Light:
   m_ObjectHideFlags: 0
@@ -5958,8 +5961,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 800, y: 200, z: 0.5}
-  m_Center: {x: 400, y: 100, z: -0.25}
+  m_Size: {x: 600, y: 200, z: 0.5}
+  m_Center: {x: 300, y: 100, z: -0.25}
 --- !u!4 &1811586548
 Transform:
   m_ObjectHideFlags: 0
@@ -6003,10 +6006,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cba2bac0dc00458a8848f730fff99da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respawnRate: 1.2
-  respawnTime: 60
-  quadSize: 400
-  initalZombies: 8
+  respawnRate: 1.3
+  respawnTime: 120
+  quadSize: 300
+  initalZombies: 6
   zombiePrefab: {fileID: 7880306283482294547, guid: cd361910cc2c2436684b86ff51a2e1ea,
     type: 3}
 --- !u!4 &1839027312
@@ -6383,7 +6386,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1946215953}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 400, y: 1, z: 400}
+  m_LocalPosition: {x: 20, y: 1, z: 20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 307452324}
@@ -6426,7 +6429,7 @@ MonoBehaviour:
   controller: {fileID: 1946215955}
   speed: 12
   gravity: -9.81
-  jumpHeight: 0
+  jumpHeight: 2
   groundCheck: {fileID: 307452324}
   groundDistance: 0.4
   groundMask:
