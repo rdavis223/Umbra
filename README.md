@@ -1,6 +1,6 @@
 # Umbra
 In a post apocalyptic world, you are trapped in a forest full of zombies. Your goal is to find a helicopter located somewhere in the forest to escape!<br>
-Created in Unity 3D for 4483 Game Design Prototype
+Created in Unity 3D for 4483 Game Design Prototype <br>
 <b>Controls:</b>
 Move: WASD keys<br>
 Look/Aim: Mouse<br>
