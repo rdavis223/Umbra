@@ -3,10 +3,15 @@ In a post apocalyptic world, you are trapped in a forest full of zombies. Your g
 
 Controls:
 Move: WASD keys
+
 Look/Aim: Mouse
+
 Melee Attack: Left Mouse Button
+
 Draw on trees: Right Mouse Button - Use this feature to place markers on trees to help mark locations and orient yourself as you navigate the forest. 
+
 Hold mouse button and move mouse to draw any shape you want on the trees. 
+
 Escape Key - Pause Menu
 
 
