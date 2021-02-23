@@ -1,6 +1,11 @@
 # Umbra
 In a post apocalyptic world, you are trapped in a forest full of zombies. Your goal is to find a helicopter located somewhere in the forest to escape!<br>
+
 Created in Unity 3D for 4483 Game Design Prototype <br>
+
+<b>How to Play: </b> <br>
+To simply play the game, just open one of the executabels located at the root of the repository. These are labelled "Umbra - Mac" and "Umbra - PC" for use on either Mac or Windows platforms. To view the Source Code and Editor, simply open the project folder in Unity version 2020.1.13f1.  
+
 <b>Controls:</b> <br>
 Move: WASD keys<br>
 Look/Aim: Mouse<br>
