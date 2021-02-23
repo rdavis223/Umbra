@@ -75,7 +75,7 @@ public class ZombieAI : MonoBehaviour
         else if (playerInAttackRange && attackCooldown <= 0f){
             justAttacked = true;
             animator.SetTrigger("Idle");
-            Invoke("Attack", 0.6f);
+            Invoke("Attack", 0.4f);
         } else if (playerInSightRange){
             animator.SetTrigger("Run");
             Chase();
@@ -110,7 +110,7 @@ public class ZombieAI : MonoBehaviour
 
     void Chase(){
         this.GetComponent<NavMeshAgent>().speed = 3.5f;
-        if (Vector3.Distance(player.transform.position, transform.position) < 10 && !playedSound){
+        if (Vector3.Distance(player.transform.position, transform.position) < 8 && !playedSound){
             this.GetComponents<AudioSource>()[0].Play();
             playedSound = true;
         }
