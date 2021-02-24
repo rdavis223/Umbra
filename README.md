@@ -20,7 +20,7 @@ Escape Key - Pause Menu <br>
 -Originally in my pitch, I planned for the compass to be a tool that the player has to find in the game world in order to use. While developing, I found that the orienteering proved too difficult without a compass, so I decided to add it as a default. <br>
 -I did not have the time to add additional weapons for this prototype, and hence a durability system. I am still planning to add these elements to the game if development moves forward. <br>
 
-<b>Asset Sources:<b><br>
+<b>Asset Sources:</b><br>
 -Sword slash sound effect: https://www.youtube.com/watch?v=Oa1mfoOInbA <br>
 -Zombie Scream: https://freesound.org/people/tonsil5/sounds/555414/ <br>
 -Zombie punch 2 : https://www.youtube.com/watch?v=6HDDjHEKfn0 <br>
