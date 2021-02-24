@@ -6009,7 +6009,7 @@ MonoBehaviour:
   respawnRate: 1.3
   respawnTime: 100
   quadSize: 300
-  initalZombies: 6
+  initalZombies: 7
   zombiePrefab: {fileID: 7880306283482294547, guid: cd361910cc2c2436684b86ff51a2e1ea,
     type: 3}
 --- !u!4 &1839027312
