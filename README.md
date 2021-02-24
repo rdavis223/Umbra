@@ -19,7 +19,7 @@ Intended to be a Horizontal prototype, featuring most of the functionality plann
 -Basic first person movement and jumping.<br>
 -Melee Combat against Zombies using knife. <br>
 -Draw markers on trees to aid with orienteering. <br>
--Basic Enemy AI: ZombiesAIs will patrol the forest. They will run towards the player when in range and attack when close to the player, they will also stop attacking and display a knockback animation when atacked. <br>
+-Basic Enemy AI: ZombiesAIs will patrol the forest. They will run towards the player when in range and attack when close to the player, they will also stop attacking for a short period of time and display a knockback animation when attacked. <br>
 -Player and Zombie health systems. <br>
 -Zombies spawn in random locations, and the number of zombies that spawn increase incrementally over time. <br>
 -Compass to help player orient themselves. <br>
