@@ -8,10 +8,25 @@ To simply play the game, just open one of the executabels located at the root of
 
 <b>Controls:</b> <br>
 Move: WASD keys<br>
+Jump: Space Bar <br>
 Look/Aim: Mouse<br>
 Melee Attack: Left Mouse Button<br>
 Draw on trees: Right Mouse Button - Use this feature to place markers on trees to help mark locations and orient yourself as you navigate the forest. Hold mouse button while looking at a tree and move mouse to draw any shape you want on the trees. <br>
 Escape Key - Pause Menu <br>
+
+<b>List Of Features: </b><br>
+Intended to be a Horizontal prototype, featuring most of the functionality planned for the game in a basic way and provide a good general feel for how the final product might look. <br>
+-Basic first person movement and jumping.
+-Melee Combat against Zombies using knife. <br>
+-Draw markers on trees to aid with orienteering. <br>
+-Basic Enemy AI: ZombiesAIs will patrol the forest. They will run towards the player when in range and attack when close to the player, they will also stop attacking and display a knockback animation when atacked. <br>
+-Player and Zombie health systems. <br>
+-Zombies spawn in random locations, and the number of zombies that spawn increase incrementally over time. <br>
+-Compass to help player orient themselves. <br>
+-Two buildings that are provided as locations to help the player orient themselves in the forest. <br>
+-Completely randomized layout for each playthough, includes position of trees, buildings, and escape helicopter (goal). <br>
+-Pause Menu UI and Basic Start Menu UI. <br>
+
 
 <b>Some Notes For Markers:</b><br>
 -Amount of zombies increase every 120 seconds. Don’t be alarmed if you don’t see a ton of enemies at the beginning <br>
