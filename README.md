@@ -24,7 +24,7 @@ Intended to be a Horizontal prototype, featuring most of the functionality plann
 -Zombies spawn in random locations, and the number of zombies that spawn increase incrementally over time. <br>
 -Compass to help player orient themselves. <br>
 -Two buildings that are provided as locations to help the player orient themselves in the forest. <br>
--Completely randomized layout for each playthough, includes position of trees, buildings, and escape helicopter (goal). <br>
+-Completely randomized game world layout for each playthough, includes position of trees, buildings, and escape helicopter (goal). <br>
 -Pause Menu UI and Basic Start Menu UI. <br>
 
 
