@@ -43,7 +43,7 @@ public class ForestGen : MonoBehaviour
             int heliX = Random.Range(10, max_i - 10);
             int heliZ = Random.Range(10, max_j - 10);
             heliPos = new Vector3(heliX, 0, heliZ);
-            if (Vector3.Distance(heliPos, player.transform.position) > 120)
+            if (Vector3.Distance(heliPos, player.transform.position) > 150)
             {
                 run = false;
             }
