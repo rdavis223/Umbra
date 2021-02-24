@@ -38,6 +38,8 @@ public class ZombieAI : MonoBehaviour
     private bool playedSound = false;
 
     public bool first_run = true;
+
+    private bool isDead = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -62,7 +64,7 @@ public class ZombieAI : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (justAttacked){
+        if (justAttacked || isDead){
             return;
         }
 
@@ -127,7 +129,7 @@ public class ZombieAI : MonoBehaviour
     }
 
     void Attack(){
-        if (!takingDamage){
+        if (!takingDamage && !isDead){
             animator.SetTrigger("Attack");
             this.GetComponents<AudioSource>()[1].Play();
             agent.SetDestination(transform.position);
@@ -140,22 +142,33 @@ public class ZombieAI : MonoBehaviour
     }
 
     public void dealDamage(int damage){
-        CancelInvoke("Attack");
-        justAttacked = false;
-        if (!takingDamage){
-            takingDamage = true;
-            animator.SetTrigger("Idle");
-            animator.SetTrigger("Damage");
-        } 
-        //Do Damage here regardless
-        zombieHealth -= damage;
-        if (zombieHealth <= 0){
-            Destroy(this.gameObject);
+        if (!isDead){
+            CancelInvoke("Attack");
+            justAttacked = false;
+            if (!takingDamage){
+                agent.enabled = false;
+                takingDamage = true;
+                animator.SetTrigger("Idle");
+                animator.SetTrigger("Damage");
+            } 
+            //Do Damage here regardless
+            zombieHealth -= damage;
+            if (zombieHealth <= 0){
+                agent.enabled = false;
+                animator.SetTrigger("Die");
+                isDead = true;
+            }
         }
     }
 
     public void finishDamage(){
-        takingDamage = false;
-        agent.enabled = true;
+        if (!isDead){
+            takingDamage = false;
+            agent.enabled = true;
+        }
+    }
+
+    public void Die(){
+        Destroy(animator.gameObject);
     }
 }
