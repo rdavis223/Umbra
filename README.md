@@ -10,7 +10,7 @@ To simply play the game, just open one of the executabels located at the root of
 Move: WASD keys<br>
 Look/Aim: Mouse<br>
 Melee Attack: Left Mouse Button<br>
-Draw on trees: Right Mouse Button - Use this feature to place markers on trees to help mark locations and orient yourself as you navigate the forest. Hold mouse button and move mouse to draw any shape you want on the trees. <br>
+Draw on trees: Right Mouse Button - Use this feature to place markers on trees to help mark locations and orient yourself as you navigate the forest. Hold mouse button while looking at a tree and move mouse to draw any shape you want on the trees. <br>
 Escape Key - Pause Menu <br>
 
 <b>Some Notes For Markers:</b><br>
