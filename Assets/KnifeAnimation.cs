@@ -19,7 +19,7 @@ public class KnifeAnimation : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.gameObject.GetComponent<PlayerAnimatorRelay>().attack();
+        //animator.gameObject.GetComponent<PlayerAnimatorRelay>().attack();
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
