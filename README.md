@@ -20,5 +20,19 @@ Escape Key - Pause Menu <br>
 -Originally in my pitch, I planned for the compass to be a tool that the player has to find in the game world in order to use. While developing, I found that the orienteering proved too difficult without a compass, so I decided to add it as a default. <br>
 -I did not have the time to add additional weapons for this prototype, and hence a durability system. I am still planning to add these elements to the game if development moves forward. <br>
 
-Asset Sources:
+<b>Asset Sources:<b><br>
+-Sword slash sound effect: https://www.youtube.com/watch?v=Oa1mfoOInbA <br>
+-Zombie Scream: https://freesound.org/people/tonsil5/sounds/555414/ <br>
+-Zombie punch 2 : https://www.youtube.com/watch?v=6HDDjHEKfn0 <br>
+Abandoned buildings asset: https://assetstore.unity.com/packages/3d/environments/abandoned-buildings-62875 <br>
+-Bodyguards asset: https://assetstore.unity.com/packages/3d/characters/humanoids/humans/bodyguards-31711 <br>
+-Dream Forest Tree asset: https://assetstore.unity.com/packages/3d/vegetation/trees/dream-forest-tree-105297 <br>
+-Hand Painted Grass Texture: https://assetstore.unity.com/packages/2d/textures-materials/floors/hand-painted-grass-texture-78552 <br>
+-Melee Pack: https://assetstore.unity.com/packages/3d/props/weapons/melee-pack-17203 <br>
+-Military Helicopter: https://assetstore.unity.com/packages/3d/vehicles/air/military-helicopter-3922 <br>
+-Zombie asset: https://assetstore.unity.com/packages/3d/characters/humanoids/zombie-30232 <br>
+-Background music: https://www.youtube.com/watch?v=RE3iTLxafyA <br>
+-Compass graphic: https://depositphotos.com/vector-images/compass.html<br>
+
+
 
