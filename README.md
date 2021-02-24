@@ -16,7 +16,7 @@ Escape Key - Pause Menu <br>
 
 <b>List Of Features: </b><br>
 Intended to be a Horizontal prototype, featuring most of the functionality planned for the game in a basic way and provide a good general feel for how the final product might look. <br>
--Basic first person movement and jumping.
+-Basic first person movement and jumping.<br>
 -Melee Combat against Zombies using knife. <br>
 -Draw markers on trees to aid with orienteering. <br>
 -Basic Enemy AI: ZombiesAIs will patrol the forest. They will run towards the player when in range and attack when close to the player, they will also stop attacking and display a knockback animation when atacked. <br>
